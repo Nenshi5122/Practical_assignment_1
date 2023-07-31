@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NodeJS App</title>
+</head>
+<body>
+  <h1>Hello</h1>
+  <button id="getHelloBtn">Get Hello from Node.js</button>
+  <div id="response"></div>
+
+  <script>
+    document.getElementById("getHelloBtn").addEventListener("click", () => {
+      fetch('/gethello')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("response").textContent = data;
+        })
+        .catch(error => {
+          document.getElementById("response").textContent = "Error occurred: " + error.message;
+        });
+    });
+  </script>
+</body>
+</html>
